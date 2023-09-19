@@ -2,6 +2,12 @@
 
 An AddOn for the Anki flashcard app to import bookmark files from the chinese dictionary app Pleco.
 
+# Progress
+
+As of now, the project is in an early stage and not ready for use as an AddOn. 
+However, the core functionality is already implemented and can be used by running the `main.py` script.
+The script will import the Pleco bookmarks stored in the file `plecodata.txt` and export the file `output.csv` which then can be imported into Anki.
+
 # Motivation
 
 Anki and Pleco are great tools for learning Chinese. However, they do not work very well together.
