@@ -6,6 +6,7 @@ import time
 # TODO: Add dependencies to requirements.txt
 # TODO: Add tests
 # TODO: wrap project in Anki add-on
+# TODO: Fork pinyin function and store in separate library folder
 
 def main():
 
