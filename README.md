@@ -1,6 +1,13 @@
 # Pleco-to-Anki
 
-An AddOn for the Anki flashcard app to import bookmark files from the chinese dictionary app Pleco.
+An AddOn for the [Anki](https://apps.ankiweb.net/) flashcard app to import bookmark files from the chinese dictionary app [Pleco](Pleco.com).
+
+Anki and Pleco are great tools for learning Chinese. However, they do not work very well together.
+Pleco is a great tool to look up new words and save them for later reference. Anki is a great tool to practice and review vocabulary. 
+The problem this project solves is the tedious and slow process of writing new Anki flashcards by manually coping information from Pleco.
+
+Using this tool, the information stored in the Pleco Bookmarks, such as the Chinese characters, pinyin, definition, and example sentences, is now being automatically imported and sorted into corresponding fields in Anki while adding some formatting as well.
+Additionally, this Add-On can add example sentences from [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) to the Anki cards, which is a great way to learn and practice chinese pronounciation from context.
 
 # Progress
 
@@ -8,15 +15,27 @@ As of now, the project is in an early stage and not ready for use as an AddOn.
 However, the core functionality is already implemented and can be used by running the `main.py` script.
 The script will import the Pleco bookmarks stored in the file `plecodata.txt` and export the file `output.csv` which then can be imported into Anki.
 
-# Motivation
+# Quick start
 
-Anki and Pleco are great tools for learning Chinese. However, they do not work very well together.
-When learning new words, I usually look them up in Pleco and add them to my Pleco bookmarks. However, when I want to practice these words, I use Anki. This means that I have to manually copy the words from Pleco to Anki. This is a very tedious process and I often end up not doing it.
+1. Install the AddOn in Anki using the code 
+2. Export Pleco Bookmarks in the Pleco app using the setting from the [screenshot below](##A Export Pleco Bookmarks in the Pleco app) and send the file to your computer.
+3. Import the Pleco Bookmarks by 
+4. Reformat the cards to your liking
 
-This project aims to solve this problem by providing a tool to import Pleco bookmarks into Anki.
-This tool will import all information stored in the Pleco Bookmarks, such as the Chinese characters, pinyin, definition, and example sentences and sort them into corresponding fields in Anki.
+# Documentation
 
-# What this tool does
+- [1. What this tool does](#What this tool does)
+- [2. Installation](#installation)
+  - [2.1. Requirements](#requirements)
+- [3. Usage](#usage)
+- [4. Features](#features)
+  - [4.1. Sort information into fields](#sort-information-into-fields)
+  - [4.2. Format information](#format-information)
+    - [4.2.1. Prettier Pinyin](#prettier-pinyin)
+    - [4.2.2. Reformatting example sentences](#reformatting-example-sentences)
+  - [4.3. Add example sentences from Spoonfed Chinese](#add-example-sentences-from-spoonfed-chinese)
+
+## 1. What this tool does
 
 The Pleco app allows for users to store bookmarks and to export these bookmarks to a textfile. This tool will parse the textfile and import the bookmarks into Anki. 
 The bookmarks will be sorted into corresponding fields in Anki, such as the Chinese characters, pinyin, definition, and example sentences.
@@ -31,7 +50,7 @@ The add on will add sentences from the Spoonfed Chinese anki deck that contain t
 Since the Spoonfed decks contain thousands of sentences with audio files from native speakers, this is a great way to learn and practice chinese pronounciation from context.
 In order for this feature to work, the Spoonfed anki deck need to be loaded in your Anki decks. The deck can be bought on the website of Spoonfed Chinese (https://promagma.gumroad.com/l/IEmpwF).
 
-## Example of a card being imported from Pleco to Anki
+### 1.1. Example of a card being imported from Pleco to Anki
 
 ![img_19.png](README_media/img_19.png)
 1) Bookmark in Pleco
@@ -39,13 +58,13 @@ In order for this feature to work, the Spoonfed anki deck need to be loaded in y
 3) Card after importing the Pleco Bookmarks into Anki using this tool
 4) Card after manually editing the card in Anki
 
-# Installation
+## 2. Installation
 
-## Requirements
+### 2.1. Requirements
 
-# Usage
+## 3. Usage
 
-## A) Export Pleco Bookmarks in the Pleco app
+### 3.1. A Export Pleco Bookmarks in the Pleco app
 
 1. In the pleco app got to `Import / Export` - `Export Bookmarks`
 
@@ -58,11 +77,11 @@ Then `Begin Export`.
 3. Go to the file manager and send the file to your computer, e.g. via Messenger, AirDrop, E-Mail etc.
 ![img_6.png](README_media/img_6.png)
 
-## B) Import Pleco Bookmarks into Anki using this AddOn
+### 3.2. B Import Pleco Bookmarks into Anki using this AddOn
 
 
 
-## C) Reformat the cards to your liking
+### 3.3. C Reformat the cards to your liking
 
 Example of a card after importing the Pleco bookmarks. In red the example sentences from Pleco, in green the example sentences from Spoonfed Chinese.
 
@@ -74,9 +93,9 @@ View of the note in anki while editing. Either edit the note in the standard vie
 Same card after manual editing.
 ![img_3.png](README_media/img_3.png)
 
-# Features
+## Features
 
-## Sort information into fields
+### Sort information into fields
 
 The defintion with examples in pleco bookmarks are not sorted or seperated in any way. This tool tries to identify example sentences and sort them into a seperate field.
 
@@ -89,14 +108,14 @@ This also works for words with multiple definitions and examples.
 
 The tool creates notes with the fields `Chinese`, `Pinyin`, `Definition`, `Example` (and `Spoonfed` if the feature is turned on).
 
-## Format information
+### Format information
 
-### Prettier Pinyin
+#### Prettier Pinyin
 
 Pleco bookmarks contain numerical pinyin (e.g. `ni3 hao3`). This tool converts the numerical pinyin to pinyin with tone marks (e.g. `nǐ hǎo`).
 For this feature, we use a custom fork of the open source [tones](https://github.com/em-shea/tones) respository. 
 
-### Reformatting example sentences
+#### Reformatting example sentences
 
 HTML tags will be added to the example sentences to make them look nicer in Anki. 
 Most importantly the pinyin and translation of an example sentence will be hidden behind the Chinese characters and only be shown when clicking on the Chinese characters. 
@@ -109,7 +128,7 @@ For example, the example sentence `中國大陸 zhōngguó dàlù Chinese mainla
 ![img_13.png](README_media/img_13.png)
 
 
-### Reformat Keywords
+#### Reformat Keywords
 Pleco notes can contain some keywords such as `verb`, `idiom`, `(TW)` etc. This tool will reformat these keywords to make them look nicer in Anki by replacing them and adding HTML tags for styling.
 
 For example here ![img_14.png](README_media/img_14.png)
@@ -117,7 +136,7 @@ the keywords verb and adjective are replaced by *v.* and *SV*.
 
 The replacement of keywords can be customised by changing the keyword_replacements.py file in the config\pleco folder.
 
-## Add Spoonfed sentences
+### Add Spoonfed sentences
 If you have the [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) anki deck loaded in your Anki decks, this tool can add example sentences from the Spoonfed Chinese anki deck to the Anki cards.
 The tool adds up to 3 example sentences from the Spoonfed deck that contain the word at hand to the card.
 The idea is, to chose the sentence that best fits the desired difficulty level and to delete the other sentences.
