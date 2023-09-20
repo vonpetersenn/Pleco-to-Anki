@@ -1,5 +1,5 @@
 import pandas as pd
-from pleco.numerical_pinyin_converter import convert_from_numerical_pinyin
+from tones.numerical_pinyin_converter import convert_from_numerical_pinyin
 from constants import *
 from pleco.Definition import Definition
 from spoonfed.Spoonfed import Spoonfed

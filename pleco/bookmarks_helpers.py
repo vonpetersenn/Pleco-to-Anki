@@ -1,7 +1,7 @@
 from constants import *
 import pandas as pd
 import unicodedata
-from pleco.numerical_pinyin_converter import convert_from_numerical_pinyin
+from tones.numerical_pinyin_converter import convert_from_numerical_pinyin
 from pleco.pinyin_exceptions import PINYIN_EXCEPTIONAL_CASES
 from pleco.keyword_replacements import KEYWORD_REPLACEMENTS
 
