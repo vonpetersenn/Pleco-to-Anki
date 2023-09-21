@@ -8,6 +8,8 @@ from pleco.bookmarks_helpers import load_pleco_file, preprocess
 from tqdm import tqdm
 tqdm.pandas()
 
+#TODO: import constants using a function from a config file instead of porting directly
+
 
 class Bookmarks:
     def __init__(self, file_name):

@@ -1,3 +1,4 @@
 pandas
 opencc
 tqdm
+orjson

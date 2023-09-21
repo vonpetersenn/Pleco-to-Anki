@@ -1,23 +1,48 @@
-# import the main window object (mw) from aqt
 from aqt import mw
-# import the "show info" tool from utils.py
-from aqt.utils import showInfo, qconnect
-# import all of the Qt GUI library
 from aqt.qt import *
+from aqt.utils import showInfo
 
-# We're going to add a menu item below. First we want to create a function to
-# be called when the menu item is activated.
+# Function to handle the checkbox state
+def on_checkbox_state_changed(state):
+    if state == Qt.Checked:
+        mw.col.conf['addon_checkbox_state'] = True
+    else:
+        mw.col.conf['addon_checkbox_state'] = False
 
-def testFunction() -> None:
-    # get the number of cards in the current collection, which is stored in
-    # the main window
-    cardCount = mw.col.cardCount()
-    # show a message box
-    showInfo("Card count: %d" % cardCount)
+# Function to create and show the GUI
+def show_checkbox_gui():
+    # Create a QDialog
+    dialog = QDialog(mw)
 
-# create a new menu item, "test"
-action = QAction("import Bookmarks from Textfile", mw)
-# set it to call testFunction when it's clicked
-qconnect(action.triggered, testFunction)
-# and add it to the tools menu
-mw.form.menuTools.addAction(action)
+    # Set dialog properties
+    dialog.setWindowTitle("Checkbox GUI")
+    dialog.setWindowModality(Qt.ApplicationModal)
+
+    # Create a QVBoxLayout for the dialog
+    layout = QVBoxLayout(dialog)
+
+    # Create a checkbox
+    checkbox = QCheckBox("Check this box")
+    checkbox.stateChanged.connect(on_checkbox_state_changed)
+
+    # Add the checkbox to the layout
+    layout.addWidget(checkbox)
+
+    # Create an "OK" button
+    ok_button = QPushButton("OK")
+    ok_button.clicked.connect(dialog.accept)
+
+    # Add the "OK" button to the layout
+    layout.addWidget(ok_button)
+
+    # Show the dialog
+    dialog.exec_()
+
+# Function to add a menu item in the Tools menu
+def add_checkbox_menu_item():
+    action = QAction("Checkbox GUI", mw)
+    action.triggered.connect(show_checkbox_gui)
+    mw.form.menuTools.addAction(action)
+
+# Initialize the checkbox menu item when Anki starts
+add_checkbox_menu_item()
