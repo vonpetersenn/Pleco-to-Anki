@@ -44,7 +44,7 @@ class Bookmarks:
     ############################
 
     def load_pleco_file(self, file_name):
-        raw_data = load_pleco_file()
+        raw_data = load_pleco_file(file_name)
         return raw_data
 
     def initialize_anki_notes(self):
