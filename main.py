@@ -26,12 +26,14 @@ def main():
 
     bookmarks.export_to_csv()
 
-from tests.test_bookmarks import test_bookmarks
-from tests.test_bookmarks import load_example_output
-def debugging():
-    print(test_bookmarks('tests/test_input1.txt'))
-    print(load_example_output('tests/test_output1.txt'))
+from tests.test_Definition import test_Definition_definition
+from tests.test_Definition import test_Definition_example_sentences
+from tests.test_Definition import load_example_file
 
+def debugging():
+    #print(test_Definition_example_sentences(load_example_file('tests/test_Definition_input_1.txt')))
+    #print(load_example_file('tests/test_Definition_output_example_sentences_1.txt'))
+    print(test_Definition_definition('tests/test_Definition_input_1.txt'))
 if __name__ == "__main__":
     #main()
     debugging()
