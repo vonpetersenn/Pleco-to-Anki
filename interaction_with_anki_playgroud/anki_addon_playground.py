@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QRadioButton, QP
     QFileDialog, QCheckBox, QSpinBox
 
 #TODO: Force user to select good txt file. otherwise throw error. right now it just crashes if nothing is selected
-#TODO: Close Window after applying changes
+#TODO: Close Window after applying changesss
 
 class AnkiGUI(QWidget):
     def __init__(self):

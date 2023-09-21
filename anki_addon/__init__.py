@@ -2,6 +2,8 @@ from aqt import mw
 from aqt.qt import *
 from aqt.utils import showInfo
 
+##TODO: Refactor anki_addon_playground into this atomic structure
+
 # Function to handle the checkbox state
 def on_checkbox_state_changed(state):
     if state == Qt.Checked:
