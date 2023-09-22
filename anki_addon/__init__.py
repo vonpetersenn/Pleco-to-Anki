@@ -2,21 +2,22 @@ from aqt import mw
 from aqt.qt import *
 from aqt.utils import showInfo
 
-##TODO: Refactor anki_addon_playground into this atomic structure
+from .Configuration import Configuration
 
+configs = Configuration()
 
-class CheckboxGUI(QDialog):
+class ImportBookmarksGUI(QDialog):
     def __init__(self, parent=None):
-        super(CheckboxGUI, self).__init__(parent)
+        super(ImportBookmarksGUI, self).__init__(parent)
 
-        self.setWindowTitle("Checkbox GUI")
+        self.setWindowTitle("Import Pleco Bookmarks GUI")
         self.setWindowModality(Qt.ApplicationModal)
 
         self.layout = QVBoxLayout(self)
 
-        self.checkbox = QCheckBox("Check this box")
+        self.checkbox = QCheckBox("Reformat Pinyin")
         self.layout.addWidget(self.checkbox)
-
+        self.checkbox.setChecked(configs.reformat_pinyin)
 
         self.ok_button = QPushButton("OK")
         self.ok_button.clicked.connect(self.accept)
@@ -27,30 +28,30 @@ class CheckboxGUI(QDialog):
         # Update the checkbox state when the dialog is shown
         self.checkbox.setChecked(mw.col.conf.get('addon_checkbox_state', False))
 
-    def show_checkbox_state(self):
-        if self.checkbox.isChecked():
-            showInfo("Checkbox is checked.")
-        elif not self.checkbox.isChecked():
-            showInfo("Checkbox is not checked")
+    def store_checkbox_state_in_configs(self):
+        if not self.checkbox.isChecked():
+            configs.reformat_pinyin = False
         else:
-            showInfo("Checkbox is in an unknown state")
+            configs.reformat_pinyin = True
 
     @staticmethod
     def show_checkbox_gui():
-        dialog = CheckboxGUI()
+        dialog = ImportBookmarksGUI()
         dialog.exec_()
-        dialog.show_checkbox_state()
-        if dialog.checkbox.isChecked():
-            dialog.run_code()
+        dialog.store_checkbox_state_in_configs()
+        dialog.run_code()
 
     def run_code(self):
-        showInfo("Instead of showing a message box, we could run the code here.")
+        if configs.reformat_pinyin:
+            showInfo("Will reformat pinyin.")
+        else:
+            showInfo("Will not reformat pinyin.")
 
 
 # Function to add a menu item in the Tools menu
 def add_checkbox_menu_item():
     action = QAction("Import Pleco Bookmarks", mw)
-    action.triggered.connect(CheckboxGUI.show_checkbox_gui)
+    action.triggered.connect(ImportBookmarksGUI.show_checkbox_gui)
     mw.form.menuTools.addAction(action)
 
 # Initialize the checkbox menu item when Anki starts
