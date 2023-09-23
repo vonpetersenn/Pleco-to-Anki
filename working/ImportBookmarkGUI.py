@@ -5,9 +5,8 @@ from aqt.utils import showInfo
 import webbrowser
 import requests
 
-from .Configuration import Configuration
+from anki_addon.Configuration import Configuration
 
-from .create_anki_cards import create_anki_cards
 
 class ImportBookmarksGUI(QDialog):
     def __init__(self, parent=None):
@@ -155,7 +154,7 @@ class ImportBookmarksGUI(QDialog):
     def ok_button_clicked(self):
         self.store_user_input_in_configs()
         if self.check_selected_file():
-            self.run_code()
+#            self.run_code()
             self.close()
 
     @staticmethod
@@ -163,6 +162,7 @@ class ImportBookmarksGUI(QDialog):
         dialog = ImportBookmarksGUI()
         dialog.exec_()
 
-    def run_code(self):
+#    def run_code(self):
 
-        showInfo(create_anki_cards(self.configs))
+#       showInfo(str(mw.col.note_count()))
+#       showInfo(create_anki_cards(self.configs))

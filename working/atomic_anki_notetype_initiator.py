@@ -1,6 +1,6 @@
 from anki.collection import Collection
 
-from notetype import NOTE_TYPE
+from anki_addon.notetype import NOTE_TYPE
 notetype = NOTE_TYPE
 
 
