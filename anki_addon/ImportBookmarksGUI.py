@@ -154,13 +154,14 @@ class ImportBookmarksGUI(QDialog):
     def ok_button_clicked(self):
         self.store_user_input_in_configs()
         if self.check_selected_file():
-#            self.run_code()
             self.close()
 
     @staticmethod
-    def show_checkbox_gui():
+    def config_from_user_input():
         dialog = ImportBookmarksGUI()
         dialog.exec_()
+        return dialog.configs
+
 
 #    def run_code(self):
 
