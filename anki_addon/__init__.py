@@ -3,7 +3,7 @@ from aqt.qt import *
 
 
 # Import the GUI
-# In GUI user sets options and runs create_anki_cards.py
+# In GUI user sets options and then executes create_anki_cards.py
 from .ImportBookmarkGUI import ImportBookmarksGUI
 
 # Function to add a menu item in the Tools menu

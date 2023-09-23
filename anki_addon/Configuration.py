@@ -1,6 +1,5 @@
 class Configuration:
     def __init__(self):
-        self.variable = ""
         self.file_name = ""
         self.output_file_name = ""
 
@@ -16,8 +15,8 @@ class Configuration:
 
         self.trad_or_simp = 'trad'
 
-    def __str__(self):
-        return self.variable
+        self.existing_notes = 'dublicates' #'dublicates' or 'skip'. Maybe in the future add option 'update' or 'overwrite'
+
 
     def read_config_from_JSON(self):
         pass

@@ -6,7 +6,6 @@ import webbrowser
 import requests
 
 from .Configuration import Configuration
-configs = Configuration()
 
 from .create_anki_cards import create_anki_cards
 
@@ -14,20 +13,22 @@ class ImportBookmarksGUI(QDialog):
     def __init__(self, parent=None):
         super(ImportBookmarksGUI, self).__init__(parent)
 
+        self.configs = Configuration()
+
         self.setWindowTitle("Import Pleco Bookmarks GUI")
         self.setWindowModality(Qt.ApplicationModal)
 
         self.checkboxPinyin = QCheckBox("Reformat Pinyin")
-        self.checkboxPinyin.setChecked(configs.reformat_pinyin)
+        self.checkboxPinyin.setChecked(self.configs.reformat_pinyin)
 
         self.checkboxKeywords = QCheckBox("Reformat Keywords")
-        self.checkboxKeywords.setChecked(configs.reformat_keywords)
+        self.checkboxKeywords.setChecked(self.configs.reformat_keywords)
 
         self.checkboxReformatExamples = QCheckBox("Reformat Example Sentences")
-        self.checkboxReformatExamples.setChecked(configs.reformat_example_sentences)
+        self.checkboxReformatExamples.setChecked(self.configs.reformat_example_sentences)
 
         self.checkboxGroupExamples = QCheckBox("Group Example Sentences")
-        self.checkboxGroupExamples.setChecked(configs.group_example_sentences)
+        self.checkboxGroupExamples.setChecked(self.configs.group_example_sentences)
 
         self.select_dir_button = QPushButton("Select Bookmarks to Import")
         self.file_path = ""
@@ -37,8 +38,8 @@ class ImportBookmarksGUI(QDialog):
         self.group_spoonfed = QButtonGroup()
         self.radio_yes = QRadioButton("Yes")
         self.radio_no = QRadioButton("No")
-        self.radio_no.setChecked(configs.spoonfed_examples)
-        self.radio_yes.setChecked(not configs.spoonfed_examples)
+        self.radio_no.setChecked(self.configs.spoonfed_examples)
+        self.radio_yes.setChecked(not self.configs.spoonfed_examples)
         # Add radio buttons to the group
         self.group_spoonfed.addButton(self.radio_yes)
         self.group_spoonfed.addButton(self.radio_no)
@@ -47,8 +48,8 @@ class ImportBookmarksGUI(QDialog):
         self.label_chars = QLabel("Select the type of chinese characters to use:")
         self.radio_trad = QRadioButton("Traditional")
         self.radio_simp = QRadioButton("Simplified")
-        self.radio_trad.setChecked(configs.trad_or_simp == "trad")
-        self.radio_simp.setChecked(configs.trad_or_simp == "simp")
+        self.radio_trad.setChecked(self.configs.trad_or_simp == "trad")
+        self.radio_simp.setChecked(self.configs.trad_or_simp == "simp")
         # Add radio buttons to the group
         self.group_trad_or_simp.addButton(self.radio_trad)
         self.group_trad_or_simp.addButton(self.radio_simp)
@@ -143,13 +144,13 @@ class ImportBookmarksGUI(QDialog):
             return False
 
     def store_user_input_in_configs(self):
-        configs.reformat_pinyin = self.checkboxPinyin.isChecked()
-        configs.reformat_keywords = self.checkboxKeywords.isChecked()
-        configs.reformat_example_sentences = self.checkboxReformatExamples.isChecked()
-        configs.group_example_sentences = self.checkboxGroupExamples.isChecked()
-        configs.file_name = self.file_path
-        configs.spoonfed_examples = self.radio_yes.isChecked()
-        configs.trad_or_simp = "trad" if self.radio_trad.isChecked() else "simp"
+        self.configs.reformat_pinyin = self.checkboxPinyin.isChecked()
+        self.configs.reformat_keywords = self.checkboxKeywords.isChecked()
+        self.configs.reformat_example_sentences = self.checkboxReformatExamples.isChecked()
+        self.configs.group_example_sentences = self.checkboxGroupExamples.isChecked()
+        self.configs.file_name = self.file_path
+        self.configs.spoonfed_examples = self.radio_yes.isChecked()
+        self.configs.trad_or_simp = "trad" if self.radio_trad.isChecked() else "simp"
 
     def ok_button_clicked(self):
         self.store_user_input_in_configs()
@@ -164,4 +165,4 @@ class ImportBookmarksGUI(QDialog):
 
     def run_code(self):
 
-        showInfo(create_anki_cards(configs))
+        showInfo(create_anki_cards(self.configs))
