@@ -1,3 +1,6 @@
+import re
+
+
 # Enables print statements useful for debugging
 DEBUG_ENABLED = False
 
@@ -18,7 +21,6 @@ def debug(*args, **kwargs):
         print(*args, **kwargs)
 
 
-import re
 def split_words(word):
     # Regular expression pattern to split behind a digit
     pattern = r'(?<=[1-5])'

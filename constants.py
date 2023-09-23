@@ -1,6 +1,6 @@
 from typing import Dict
 
-FILE_NAME = 'plecodata.txt'
+FILE_NAME = 'anki_addon/pleco/plecodata.txt'
 OUTPUT_FILE_NAME = 'output.csv'
 
 #tone marks instead of numbers

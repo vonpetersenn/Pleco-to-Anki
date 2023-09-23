@@ -1,5 +1,5 @@
 import unittest
-from pleco.Bookmarks import Definition
+from pleco.Bookmarks_old import Definition
 import time
 import pandas as pd
 

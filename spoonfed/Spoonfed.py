@@ -1,10 +1,8 @@
-import pandas as pd
 from constants import NUMBER_OF_SPOONS, TRAD_OR_SIMP
-import numpy as np
-import random
+
 from spoonfed.spoonfed_helpers import *
 
-spoonfed_chinese_pickle_directory = 'spoonfed\spoonfed_chinese.pickle'
+
 
 spoonfed_chinese_pickle_directory_simp = 'spoonfed\spoonfed_chinese_simp.pickle'
 spoonfed_chinese_pickle_directory_trad = 'spoonfed\spoonfed_chinese_trad.pickle'

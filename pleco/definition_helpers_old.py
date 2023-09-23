@@ -1,4 +1,4 @@
-from pleco.bookmarks_helpers import *
+from pleco.bookmarks_helpers_old import *
 from pleco.keyword_replacements import KEYWORD_REPLACEMENTS
 from constants import *
 

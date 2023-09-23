@@ -1,6 +1,6 @@
 class Configuration:
     def __init__(self):
-        self.file_name = ""
+        self.file_name = "D:/Projekte/Pleco-to-Anki/anki_addon/pleco/plecodata.txt"
         self.output_file_name = ""
 
         self.reformat_pinyin = True
@@ -9,6 +9,8 @@ class Configuration:
         self.reformat_example_sentences = True
         self.group_example_sentences = True
         self.supress_cross_references = True
+
+        self.replace_keywords = True
 
         self.spoonfed_examples = True
         self.number_of_spoons = 3

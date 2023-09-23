@@ -7,6 +7,8 @@ from .Configuration import Configuration
 import time
 
 from .ImportBookmarksGUI import ImportBookmarksGUI
+from .pleco.Bookmarks import Bookmarks
+from .pleco.Bookmark import Bookmark
 
 #everything in excecuted_function, as using submodules are not connected
     #to the Collection object mw.col, as this one is ONLY callable through qconnect
@@ -17,11 +19,9 @@ from .ImportBookmarksGUI import ImportBookmarksGUI
 def excecuted_function() -> None:
 
 
-    dialog = ImportBookmarksGUI()
-    configs = dialog.config_from_user_input()
-
-
-
+    #dialog = ImportBookmarksGUI()
+    #configs = dialog.config_from_user_input()
+    configs = Configuration()
 
     #initialize note type
     #TODO: find out why first time the notetype is created twice
@@ -42,34 +42,26 @@ def excecuted_function() -> None:
     tag = "pleco::" + time.strftime("%Y-%m-%d")
 
     ########
-    # inprinciple add modified version of script from main.py here
-    file_name = configs.file_name
 
-    # get notes from Bookmarks TODO:modify Bookmarks to work without pandas
-    dict = {}
-    dict.update({"Hanzi": "泡茶"})
-    dict.update({"Pinyin": "paocha"})
-    dict.update({"Definition": "to make tea"})
-    dict.update({"Examples": "diese anderen details"})
-    dict.update({"Spoonfed": ""})
-    notes = [dict]
+    #showInfo("Importing bookmarks from " + file_name)
+    all_bookmarks = Bookmarks(configs.file_name)
 
     counter = 0
-    counter_dublicate = 0
+    counter_dublicates = 0
 
-    for dict in notes:
+    for slice in [all_bookmarks.get_slice(5)]: #in all_bookmarks.raw_data:
+
+        dict = {}
+
+        bookmark = Bookmark(slice, configs)
+
+        dict.update({"Hanzi": bookmark.hanzi})
+        dict.update({"Pinyin": bookmark.pinyin})
+        dict.update({"Definition": bookmark.definiton})
+        dict.update({"Examples": bookmark.examples})
+        dict.update({"Spoonfed": bookmark.spoonfed})
 
         note = mw.col.new_note(notetype)
-
-        if mw.col.find_notes(dict.get('Hanzi')) == []:
-            print("note does not exist in collection yet")
-        elif configs.existing_notes == 'skip':
-            print("note already exists in collection")
-            continue
-        else:
-            print("note already exists in collection")
-            counter_dublicate += 1
-            note.tags.append('dublicate')
 
         note.fields[0] = dict.get("Hanzi")
         note.fields[1] = dict.get("Pinyin")
@@ -78,13 +70,24 @@ def excecuted_function() -> None:
         note.fields[4] = dict.get("Spoonfed")
 
         note.tags.append(tag)
+
+        if mw.col.find_notes(dict.get('Hanzi')) == []:
+            print("note does not exist in collection yet")
+        elif configs.existing_notes == 'skip':
+            print("note already exists in collection")
+            pass #continue
+        else:
+            print("note already exists in collection")
+            counter_dublicates += 1
+            note.tags.append('dublicate')
+
         mw.col.add_note(note, deck_id)
 
         counter += 1
 
     showInfo(str(counter) +
              " new cards created, of which " +
-             str(counter_dublicate) +
+             str(counter_dublicates) +
              " are dublicates" +
              str(configs.file_name)
              )

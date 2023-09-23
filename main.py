@@ -1,5 +1,5 @@
-from pleco.Bookmarks import Bookmarks
-from pleco.definition_helpers import *
+from pleco.Bookmarks_old import Bookmarks
+from pleco.definition_helpers_old import *
 
 import time
 
@@ -8,7 +8,17 @@ import time
 # TODO: wrap project in Anki add-on
 # TODO: Fork pinyin function and store in separate library folder
 
+file_name = 'anki_addon/pleco/plecodata.txt'
+
+from pleco.bookmark_helpers import *
+
 def main():
+
+    bookmarks = Bookmarks()
+    if bookmarks.reformat_pinyin:
+        bookmarks.reformat_pinyin()
+
+def main_old():
 
     bookmarks = Bookmarks(FILE_NAME)
 
