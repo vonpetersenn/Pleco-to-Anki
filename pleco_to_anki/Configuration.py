@@ -3,7 +3,7 @@ class Configuration:
 
         self.run_code = False
 
-        self.file_name = "/pleco_to_anki_addon/exampledata.txt"
+        self.file_name = "/pleco_to_anki/exampledata.txt"
         self.output_file_name = ""
 
         self.reformat_pinyin = True

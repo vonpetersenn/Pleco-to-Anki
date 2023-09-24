@@ -5,7 +5,7 @@ from aqt.utils import showInfo
 import webbrowser
 import requests
 
-from pleco_to_anki_addon.Configuration import Configuration
+from pleco_to_anki.Configuration import Configuration
 
 
 class ImportBookmarksGUI(QDialog):
@@ -133,7 +133,9 @@ class ImportBookmarksGUI(QDialog):
 
     def more_options_button_clicked(self):
         showInfo(""
-                 "For more options, please edit the configuration file directly.\n"
+                 "As of now, no additional options possible by input through Anki.\n"
+                 "In future versions, more configuration options will be accessible through the AddOn config\n"
+                 "For more options, please edit the configuration file directly."
                  "Tools -> AddOns -> Pleco to Anki -> Config"
                  "")
 

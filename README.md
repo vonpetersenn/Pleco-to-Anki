@@ -1,39 +1,36 @@
 # Pleco-to-Anki
 
-An AddOn for the [Anki](https://apps.ankiweb.net/) flashcard app to import bookmark files from the chinese dictionary app [Pleco](Pleco.com).
+An [Anki](https://apps.ankiweb.net/) add-on for importing [Pleco](Pleco.com) bookmarks, enhancing the integration of two essential tools for learning Chinese. 
+It streamlines flashcard creation by automatically transferring character info, pinyin, definitions, and examples from Pleco Bookmarks to Anki cards, with improved formatting. 
+Optionally, it includes context-rich example sentences from [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) for enhanced pronunciation practice.
 
-Anki and Pleco are great tools for learning Chinese. However, they do not work very well together.
-Pleco is a great tool to look up new words and save them for later reference. Anki is a great tool to practice and review vocabulary. 
-The problem this project solves is the tedious and slow process of writing new Anki flashcards by manually coping information from Pleco.
 
-Using this tool, the information stored in the Pleco Bookmarks, such as the Chinese characters, pinyin, definition, and example sentences, is now being automatically imported and sorted into corresponding fields in Anki while adding some formatting as well.
-Additionally, this Add-On can add example sentences from [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) to the Anki cards, which is a great way to learn and practice chinese pronounciation from context.
+# Quick Guide
 
-# Progress
-
-As of now, the project is in an early stage and not ready for use as an AddOn. 
-However, the core functionality is already implemented and can be used by running the `main.py` script.
-The script will import the Pleco bookmarks stored in the file `plecodata.txt` and export the file `output.csv` which then can be imported into Anki.
-
-# Quick start
-
-1. Install the AddOn in Anki using the code 
-2. Export Pleco Bookmarks in the Pleco app using the setting from the [screenshot below](##A Export Pleco Bookmarks in the Pleco app) and send the file to your computer.
-3. Import the Pleco Bookmarks by 
+1. Install the AddOn in Anki using the `427686509`\
+   `Tools -> AddOns -> Get AddOns -> 427686509`
+2. Export Pleco Bookmarks on your phone and save them on your computer. 
+   Make sure to use these [settings](README_media/img_4.png).
+3. Import the Bookmarks in Anki under `Tools -> Import Pleco Bookmarks`
 4. Reformat the cards to your liking
 
-# Documentation
+# Table of Contents
 
-- [1. What this tool does](#What this tool does)
-- [2. Installation](#installation)
-  - [2.1. Requirements](#requirements)
-- [3. Usage](#usage)
-- [4. Features](#features)
-  - [4.1. Sort information into fields](#sort-information-into-fields)
-  - [4.2. Format information](#format-information)
-    - [4.2.1. Prettier Pinyin](#prettier-pinyin)
-    - [4.2.2. Reformatting example sentences](#reformatting-example-sentences)
-  - [4.3. Add example sentences from Spoonfed Chinese](#add-example-sentences-from-spoonfed-chinese)
+
+   - [1. What this tool does](#1-what-this-tool-does)
+     - [Example of a card being imported from Pleco to Anki](#11-example-of-a-card-being-imported-from-pleco-to-anki)
+   - [2. Installation](#2-installation)
+   - [3. Usage](#3-usage)
+     - [Export Pleco Bookmarks in the Pleco app](#31-export-pleco-bookmarks-in-the-pleco-app)
+     - [Import Pleco Bookmarks into Anki](#32-import-pleco-bookmarks-into-anki-using-this-addon)
+     - [Reformat the cards to your liking](#33-reformat-the-cards-to-your-liking)
+   - [4. Features](#4-features)
+     - [Sort information into fields](#41-sort-information-into-fields)
+     - [Format information](#42-format-information)
+     - [Add Spoonfed sentences](#add-spoonfed-sentences)
+
+
+# Documentation
 
 ## 1. What this tool does
 
@@ -45,8 +42,7 @@ After importing the Bookmarks, one only has to give the cards a final touch in A
 Since the information stored in Pleco bookmark is not well sorted, this tool does not work perfectly, sometimes the formatting of the information will be off or sorted in the wrong field. However, it still speeds up the process of building high quality anki cards, since it automates most of the work and adds some clever HTML formatting to the notes.
 
 Additionally, this Add-On can add example sentences from [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) to the Anki cards.
-This feature is **turned off by default** and can be turned on in the settings.
-The add on will add sentences from the Spoonfed Chinese anki deck that contain the word at hand to the card.
+The add-on will add sentences from the Spoonfed Chinese anki deck that contain the word at hand to the card.
 Since the Spoonfed decks contain thousands of sentences with audio files from native speakers, this is a great way to learn and practice chinese pronounciation from context.
 In order for this feature to work, the Spoonfed anki deck need to be loaded in your Anki decks. The deck can be bought on the website of Spoonfed Chinese (https://promagma.gumroad.com/l/IEmpwF).
 
@@ -60,11 +56,17 @@ In order for this feature to work, the Spoonfed anki deck need to be loaded in y
 
 ## 2. Installation
 
-### 2.1. Requirements
+Three options.
+
+ - Download the latest release through Anki by using the `427686509` in the Anki AddOns menu: `Tools -> AddOns -> Get AddOns -> code`
+ - Download the latest `pleco-to-anki.ankiaddon` file from [GitHub](https://www.github.com/vonpetersenn/pleco-to-anki) and install it by double-clicking or in Anki `Tools -> AddOns -> Install from file`
+ - Download the source code and place the folder `pleco_to_anki` in the Anki AddOn folder, which, at least under Windows, is located at `.../AppData/Roaming/Anki2/addons21`'
+
+If you want to use the Spoonfed Chinese feature, you need to have the Spoonfed Chinese anki deck loaded in your Anki collection. The deck can be bought on the website of Spoonfed Chinese (https://promagma.gumroad.com/l/IEmpwF).
 
 ## 3. Usage
 
-### 3.1. A Export Pleco Bookmarks in the Pleco app
+### 3.1. Export Pleco Bookmarks in the Pleco app
 
 1. In the pleco app got to `Import / Export` - `Export Bookmarks`
 
@@ -77,11 +79,17 @@ Then `Begin Export`.
 3. Go to the file manager and send the file to your computer, e.g. via Messenger, AirDrop, E-Mail etc.
 ![img_6.png](README_media/img_6.png)
 
-### 3.2. B Import Pleco Bookmarks into Anki using this AddOn
+### 3.2. Import Pleco Bookmarks into Anki using this AddOn
+
+In Anki go to `Tools -> Import Pleco Bookmarks`. 
+Select the file you just exported from Pleco and click `ok`. 
+The options are set to the default values, which should work fine.
+In general the options toggle some of the features described below.
+
+![img_21.png](README_media/img_21.png)
 
 
-
-### 3.3. C Reformat the cards to your liking
+### 3.3. Reformat the cards to your liking
 
 Example of a card after importing the Pleco bookmarks. In red the example sentences from Pleco, in green the example sentences from Spoonfed Chinese.
 
@@ -93,7 +101,7 @@ View of the note in anki while editing. Either edit the note in the standard vie
 Same card after manual editing.
 ![img_3.png](README_media/img_3.png)
 
-## Features
+## 4. Features
 
 ### Sort information into fields
 
