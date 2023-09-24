@@ -1,6 +1,6 @@
 # Pleco-to-Anki
 
-An [Anki](https://apps.ankiweb.net/) add-on for importing [Pleco](Pleco.com) bookmarks, enhancing the integration of two essential tools for learning Chinese. 
+An [Anki](https://ankiweb.net/shared/info/427686509?cb=1695579432428) add-on for importing [Pleco](Pleco.com) bookmarks, enhancing the integration of two essential tools for learning Chinese. 
 It streamlines flashcard creation by automatically transferring character info, pinyin, definitions, and examples from Pleco Bookmarks to Anki cards, with improved formatting. 
 Optionally, it includes context-rich example sentences from [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) for enhanced pronunciation practice.
 
