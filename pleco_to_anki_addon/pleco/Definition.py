@@ -11,6 +11,9 @@ class Definition:
         self.configs = configs
         self.information = information
 
+        if self.configs.supress_cross_references:
+            self.information = supress_cross_references(self.information)
+
         self.segments = []
         self.word_types = []
 
@@ -53,6 +56,26 @@ class Definition:
 
     def get_example_sentences(self):
         return build_string_from_list(self.example_sentences)
+
+
+# cross references result in long ugly strings. this function removes the crossreferences from the raw information string
+def supress_cross_references(long_string):
+
+    # Split the string into parts using 'See ' as a delimiter
+    parts = long_string.split(' See ')
+
+    if len(parts) == 1:
+        return long_string
+
+    new_string = parts[0]
+
+    for string in parts[1:]:
+        sub_parts = string.split(' ')
+        if len(sub_parts) > 1:
+            sub_parts = sub_parts[1:]
+            new_string += ' ' + ' '.join(sub_parts)
+
+    return new_string
 
 def build_string_from_list(list_of_strings):
 
