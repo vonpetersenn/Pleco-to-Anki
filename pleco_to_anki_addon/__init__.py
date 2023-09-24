@@ -3,12 +3,14 @@ import time
 from aqt import mw
 from aqt.utils import qconnect, showInfo, QAction
 
-from anki_addon.Configuration import Configuration
+from pleco_to_anki_addon.Configuration import Configuration
 
 from .ImportBookmarksGUI import ImportBookmarksGUI
 from .pleco.All_Bookmarks import All_Bookmarks
 from .pleco.Bookmark import Bookmark
 from .spoonfed.Spoonfed import Spoonfed
+
+#TODO: config file to modify the word replacements.
 
 #for some reason, when running the AddOn, the Collection object mw.col is ONLY callable through qconnect
 #so any function working on the col need to be in one big function, not in submodules
@@ -17,6 +19,9 @@ def excecuted_function() -> None:
 
     dialog = ImportBookmarksGUI()
     configs = dialog.config_from_user_input()
+
+    if configs.run_code == False:
+        return
 
     #configs = Configuration()
 
@@ -40,17 +45,10 @@ def excecuted_function() -> None:
 
     ########
 
-    showInfo(
-        "Importing bookmarks from " + configs.file_name + " with the following settings:\n" +
-        "Reformat Pinyin: " + str(configs.reformat_pinyin) + "\n" +
-        "Reformat Keywords: " + str(configs.reformat_keywords) + "\n" +
-        "Reformat Example Sentences: " + str(configs.reformat_example_sentences) + "\n" +
-        "Group Example Sentences: " + str(configs.group_example_sentences) + "\n" +
-        "Add Spoonfed examples: " + str(configs.spoonfed_examples) + "\n")
     all_bookmarks = All_Bookmarks(configs.file_name)
 
     counter = 0
-    counter_dublicates = 0
+    counter_duplicates = 0
 
     #for slice in [all_bookmarks.get_slice(5)]: #in all_bookmarks.raw_data:
 
@@ -80,21 +78,22 @@ def excecuted_function() -> None:
             print("note does not exist in collection yet")
         elif configs.existing_notes == 'skip':
             print("note already exists in collection")
-            pass #continue
+            counter_duplicates += 1
+            continue
         else:
             print("note already exists in collection")
-            counter_dublicates += 1
-            note.tags.append('dublicate')
+            counter_duplicates += 1
+            note.tags.append('duplicate')
 
         mw.col.add_note(note, deck_id)
 
         counter += 1
 
     showInfo("Successfully created " + str(counter) +
-             " new cards "  +
-             "Of those " + str(counter_dublicates) +
-             " are dublicates, i.e. you already have cards with the same Hanzi field in your collection. \n"+
-             "To delete or work on dublicates, look for the tag 'dublicate'.")
+             " new cards. \n\n"  +
+             "Of the " + str(len(all_bookmarks)) + " bookmarks " + str(counter_duplicates) +
+             " where duplicates, i.e. cards with the same Hanzi field where already in the collection. \n"+
+             "To delete or work on duplicates, look for the tag 'duplicate'.")
 
 from .notetype import NOTE_TYPE
 

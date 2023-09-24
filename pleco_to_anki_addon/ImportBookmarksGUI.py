@@ -5,7 +5,7 @@ from aqt.utils import showInfo
 import webbrowser
 import requests
 
-from anki_addon.Configuration import Configuration
+from pleco_to_anki_addon.Configuration import Configuration
 
 
 class ImportBookmarksGUI(QDialog):
@@ -33,8 +33,20 @@ class ImportBookmarksGUI(QDialog):
         self.file_path = ""
         self.select_dir_button.clicked.connect(self.select_file)
 
-        self.label_spoonfed = QLabel("Add Spoonfed examples?")
+        self.group_duplicates = QButtonGroup()
+        self.label_duplicates = QLabel("How to deal with words that are already in the collection?\n"
+                                       "In any case, existing notes will not be modified.")
+        self.radio_duplicates_skip = QRadioButton("Skip")
+        self.radio_duplicates_duplicate = QRadioButton("Create Note Anyway")
+        self.radio_duplicates_duplicate.setChecked(self.configs.existing_notes == 'duplicates')
+        self.radio_duplicates_skip.setChecked(self.configs.existing_notes == 'skip')
+        # Add radio buttons to the group
+        self.group_duplicates.addButton(self.radio_duplicates_skip)
+        self.group_duplicates.addButton(self.radio_duplicates_duplicate)
+
+
         self.group_spoonfed = QButtonGroup()
+        self.label_spoonfed = QLabel("Add Spoonfed examples?")
         self.radio_yes = QRadioButton("Yes")
         self.radio_no = QRadioButton("No")
         self.radio_no.setChecked(self.configs.spoonfed_examples)
@@ -44,7 +56,7 @@ class ImportBookmarksGUI(QDialog):
         self.group_spoonfed.addButton(self.radio_no)
 
         self.group_trad_or_simp = QButtonGroup()
-        self.label_chars = QLabel("Select the type of chinese characters to use:")
+        self.label_chars = QLabel("Select the type of chinese characters")
         self.radio_trad = QRadioButton("Traditional")
         self.radio_simp = QRadioButton("Simplified")
         self.radio_trad.setChecked(self.configs.trad_or_simp == "trad")
@@ -76,6 +88,10 @@ class ImportBookmarksGUI(QDialog):
         main_layout.addWidget(self.checkboxKeywords)
         main_layout.addWidget(self.checkboxReformatExamples)
         main_layout.addWidget(self.checkboxGroupExamples)
+
+        main_layout.addWidget(self.label_duplicates)
+        main_layout.addWidget(self.radio_duplicates_duplicate)
+        main_layout.addWidget(self.radio_duplicates_skip)
 
         main_layout.addWidget(self.select_dir_button)
 
@@ -150,9 +166,11 @@ class ImportBookmarksGUI(QDialog):
         self.configs.file_name = self.file_path
         self.configs.spoonfed_examples = self.radio_yes.isChecked()
         self.configs.trad_or_simp = "trad" if self.radio_trad.isChecked() else "simp"
+        self.configs.existing_notes = "skip" if self.radio_duplicates_skip.isChecked() else "duplicates"
 
     def ok_button_clicked(self):
         self.store_user_input_in_configs()
+        self.configs.run_code = True
         if self.check_selected_file():
             self.close()
 

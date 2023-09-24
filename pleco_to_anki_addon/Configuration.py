@@ -1,6 +1,9 @@
 class Configuration:
     def __init__(self):
-        self.file_name = "/anki_addon/exampledata.txt"
+
+        self.run_code = False
+
+        self.file_name = "/pleco_to_anki_addon/exampledata.txt"
         self.output_file_name = ""
 
         self.reformat_pinyin = True
@@ -17,7 +20,7 @@ class Configuration:
         self.reformat_spoonfed_examples = self.reformat_example_sentences
         self.trad_or_simp = 'trad'
 
-        self.existing_notes = 'dublicates' #'dublicates' or 'skip'. Maybe in the future add option 'update' or 'overwrite'
+        self.existing_notes = 'duplicates' #'duplicates' or 'skip'. Maybe in the future add option 'update' or 'overwrite'
 
 
     def read_config_from_JSON(self):
