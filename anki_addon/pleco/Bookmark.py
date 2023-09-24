@@ -1,5 +1,6 @@
 from .Definition import Definition
 from ..tones.numerical_pinyin_converter import convert_from_numerical_pinyin
+from ..spoonfed.Spoonfed import Spoonfed
 
 class Bookmark:
 
@@ -19,10 +20,12 @@ class Bookmark:
 
         self.information = bookmarks_slice['Information']
 
-        self.def_exmpl = Definition(self.information, self.configs)
+        self.defi = Definition(self.information, self.configs)
 
-        self.definiton = self.def_exmpl.get_definition()
-        self.examples = self.def_exmpl.get_example_sentences()
+        self.definition = self.defi.get_definition()
+        self.examples = self.defi.get_example_sentences()
 
         self.spoonfed = ''
+        if self.configs.spoonfed_examples:
+            self.spoonfed = str(Spoonfed(self.hanzi, self.configs))
 

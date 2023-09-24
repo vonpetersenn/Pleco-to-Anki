@@ -1,4 +1,4 @@
-class Bookmarks:
+class All_Bookmarks:
     def __init__(self, file_name):
 
         self.raw_data = load_pleco_data(file_name)
@@ -38,4 +38,4 @@ def load_pleco_data(file_name):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-#print(load_pleco_data("plecodata.txt")[5].get("Hanzi"))
+#print(load_pleco_data("exampledata.txt")[5].get("Hanzi"))

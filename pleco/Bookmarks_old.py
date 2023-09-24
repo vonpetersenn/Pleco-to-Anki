@@ -6,7 +6,7 @@ class Bookmarks:
 
     def __init__(self):
 
-        self.file_name = "../anki_addon/pleco/plecodata.txt"
+        self.file_name = "../anki_addon/exampledata.txt"
 
         self.raw_data = load_pleco_data(self.file_name)
 

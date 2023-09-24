@@ -23,18 +23,19 @@ class Definition:
         # add html tags to hide pinyin and translations behind the chinese characters
         if self.configs.reformat_example_sentences:
             self.segments = reformat_example_sentences(self.segments, self.word_types)
+        else:
+            self.segments = build_basic_example_sentences(self.segments, self.word_types)
 
         # more pretty formatting of "verb", "noun", etc.
-        if self.configs.replace_keywords:
+        if self.configs.reformat_keywords:
             self.segments = reformat_keywords(self.segments, self.word_types, keyword_replacements)
 
         self.segments, self.word_types = strip_segments_of_numbers(self.segments, self.word_types)
 
-        # we don't want to have <br> after keywords in our anki notes,
-        # so we need to join keywords with the english word that follows them
+        # we don't want to have <br> after keywords in our anki notes, so we need to join keywords with the english word that follows them
         self.segments, self.word_types = join_keyword_with_english_segments(self.segments, self.word_types)
 
-        self.segments = do_minor_reformatting(self.segments, self.word_types)
+        self.segments = do_minor_reformatting(self.segments)
 
 
         # group example sentences and definitions as they serve different purposes in our anki notes
@@ -42,7 +43,10 @@ class Definition:
         if self.configs.group_example_sentences:
             self.definition, self.example_sentences = group_example_sentences(self.segments, self.word_types)
         else:
-            self.definition, self.example_sentences = self.segments[0], self.segments[1:]
+            if len(self.segments) > 1:
+                self.definition, self.example_sentences = [self.segments[0]], self.segments[1:]
+            else:
+                self.definition, self.example_sentences = self.segments, []
 
     def get_definition(self):
         return build_string_from_list(self.definition)
@@ -76,7 +80,7 @@ def group_example_sentences(segments, word_types):
 
     return definition, example_sentences
 
-def do_minor_reformatting(segments, word_types):
+def do_minor_reformatting(segments):
     new_segments = []
 
     for segment in segments:
@@ -138,6 +142,16 @@ def reformat_keywords(segments, word_types, keyword_replacements=keyword_replace
 
     segments = new_segments
     return segments
+
+def build_basic_example_sentences(segments, word_types):
+    new_segments = []
+    for index, segment in enumerate(segments):
+        if word_types[index] == 'example':
+            string = segment[0] + '<br>' + segment[1] + '<br>' + segment[2] + '<br>'
+            new_segments.append(string)
+        else:
+            new_segments.append(segment)
+    return new_segments
 
 def reformat_example_sentences(segments, word_types):
     new_segments = []
