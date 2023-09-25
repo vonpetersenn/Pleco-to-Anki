@@ -2,6 +2,7 @@ class All_Bookmarks:
     def __init__(self, file_name):
 
         self.raw_data = load_pleco_data(file_name)
+        self.raw_data = delete_category_headings(self.raw_data)
 
     def get_slice(self, index):
         return self.raw_data[index]
@@ -19,6 +20,9 @@ def load_pleco_data(file_name):
             data = []
 
             for row in rows:
+                #delete category headings
+                if category_heading(row) is True:
+                    continue
                 cells = row.split('\t')
 
                 if len(cells) == 3:
@@ -38,4 +42,12 @@ def load_pleco_data(file_name):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def category_heading(row : str) -> bool:
+    if row.startswith('//'):
+        return True
+    else:
+        return False
+
 #print(load_pleco_data("exampledata.txt")[5].get("Hanzi"))
+
+print(load_pleco_data("D:/Projekte/Pleco-to-Anki/pleco_to_anki/exampledata2.txt"))
