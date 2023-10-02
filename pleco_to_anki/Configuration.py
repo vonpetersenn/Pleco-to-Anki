@@ -16,7 +16,7 @@ class Configuration:
         self.reformat_keywords = True
 
         self.spoonfed_examples = True
-        self.number_of_spoons = 3
+        self.number_of_spoons = 2
         self.reformat_spoonfed_examples = self.reformat_example_sentences
         self.trad_or_simp = 'trad'
 

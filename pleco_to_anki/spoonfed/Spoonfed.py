@@ -32,7 +32,7 @@ class Spoonfed:
 
     def __str__(self):
         string = ''
-        return '<br><br>'.join(self.example_sentences)
+        return '<br><br>\n\n'.join(self.example_sentences)
 
 def pretty_example_sentence(spoon : list) -> str:
     hanzi = spoon[0]
@@ -41,13 +41,13 @@ def pretty_example_sentence(spoon : list) -> str:
     soundfile = spoon[3]
 
     string = ''
-    string += '<details><summary><big>'
+    string += '<details><summary><big>\n'
     string += hanzi
-    string += '</big></summary>' + '<small>'
+    string += '\n</big></summary>' + '<small>\n'
     string += pinyin
-    string += '<br></small>'
+    string += '\n<br></small>\n'
     string += english
-    string += '<br></details>'
+    string += '\n<br></details>\n'
     string += soundfile
 
     return string

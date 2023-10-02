@@ -88,7 +88,7 @@ def build_string_from_list(list_of_strings):
         for string in list:
             b += string
             b += ''
-        a += b + '<br>'
+        a += b + '<br>\n'
     return a
 
 def group_example_sentences(segments, word_types):
@@ -188,13 +188,13 @@ def reformat_example_sentences(segments, word_types):
     return new_segments
 
 def build_hidden_example_sentence(chinese: str, pinyin: str, english: str) -> str:
-    example_sentence = '<details><summary><big>' \
+    example_sentence = '<details><summary><big>\n' \
                        + chinese \
-                       + '</big></summary>' + '<small>' \
+                       + '\n</big></summary>' + '<small>\n' \
                        + pinyin \
-                       + '<br>' + '</small>'\
+                       + '\n<br>' + '</small>\n'\
                        + english \
-                       + '<br></details><br>'
+                       + '\n<br></details><br>\n\n'
     return example_sentence
 
 def prettify_or_case(input_string):

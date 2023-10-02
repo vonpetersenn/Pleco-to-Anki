@@ -10,6 +10,7 @@ from .pleco.All_Bookmarks import All_Bookmarks
 from .pleco.Bookmark import Bookmark
 from .spoonfed.Spoonfed import Spoonfed
 
+
 #TODO: config file to modify the word replacements.
 
 #for some reason, when running the AddOn, the Collection object mw.col is ONLY callable through qconnect

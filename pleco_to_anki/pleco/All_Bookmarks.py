@@ -1,8 +1,9 @@
+
+
 class All_Bookmarks:
     def __init__(self, file_name):
 
         self.raw_data = load_pleco_data(file_name)
-        self.raw_data = delete_category_headings(self.raw_data)
 
     def get_slice(self, index):
         return self.raw_data[index]
