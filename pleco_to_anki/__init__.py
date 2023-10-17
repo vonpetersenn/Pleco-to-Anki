@@ -3,7 +3,7 @@ import time
 from aqt import mw
 from aqt.utils import qconnect, showInfo, QAction
 
-from pleco_to_anki.Configuration import Configuration
+from .Configuration import Configuration
 
 from .ImportBookmarksGUI import ImportBookmarksGUI
 from .pleco.All_Bookmarks import All_Bookmarks
