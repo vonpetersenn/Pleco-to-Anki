@@ -1,14 +1,15 @@
 # Pleco-to-Anki
 
 An [Anki](https://ankiweb.net/shared/info/427686509?cb=1695579432428) add-on for importing [Pleco](Pleco.com) bookmarks, enhancing the integration of two essential tools for learning Chinese. 
+
 It streamlines flashcard creation by automatically transferring character info, pinyin, definitions, and examples from Pleco Bookmarks to Anki cards, with improved formatting. 
+
 Optionally, it includes context-rich example sentences from [Spoonfed Chinese](https://promagma.gumroad.com/l/IEmpwF) for enhanced pronunciation practice.
 
 
 # Quick Guide
 
-1. Install the AddOn in Anki using the `427686509`\
-   `Tools -> AddOns -> Get AddOns -> 427686509`
+1. Install the AddOn by downloading and double-clicking the `pleco_to_anki.addon` [file](https://github.com/vonpetersenn/Pleco-to-Anki/releases) .
 2. Export Pleco Bookmarks on your phone and save them on your computer. 
    Make sure to use these [settings](README_media/img_4.png).
 3. Import the Bookmarks in Anki under `Tools -> Import Pleco Bookmarks`
