@@ -5,7 +5,7 @@ from aqt.utils import showInfo
 import webbrowser
 import requests
 
-from pleco_to_anki.Configuration import Configuration
+from .Configuration import Configuration
 
 
 class ImportBookmarksGUI(QDialog):
