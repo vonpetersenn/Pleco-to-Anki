@@ -9,7 +9,7 @@ Optionally, it includes context-rich example sentences from [Spoonfed Chinese](h
 
 # Quick Guide
 
-1. Install the AddOn by downloading and double-clicking the `pleco_to_anki.addon` [file](https://github.com/vonpetersenn/Pleco-to-Anki/releases) .
+1. Install the AddOn through AnkiWeb using the code `427686509` OR by downloading and double-clicking the `pleco_to_anki.addon` [file](https://github.com/vonpetersenn/Pleco-to-Anki/releases) .
 2. Export Pleco Bookmarks on your phone and save them on your computer. 
    Make sure to use these [settings](README_media/img_4.png).
 3. Import the Bookmarks in Anki under `Tools -> Import Pleco Bookmarks`
