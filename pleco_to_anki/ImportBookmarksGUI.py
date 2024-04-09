@@ -1,6 +1,7 @@
 from aqt import mw
 from aqt.qt import *
 from aqt.utils import showInfo
+from PyQt6 import QtCore
 
 import webbrowser
 import requests
@@ -15,7 +16,7 @@ class ImportBookmarksGUI(QDialog):
         self.configs = Configuration()
 
         self.setWindowTitle("Import Pleco Bookmarks GUI")
-        self.setWindowModality(Qt.ApplicationModal)
+        self.setWindowModality(QtCore.Qt.WindowModality.ApplicationModal)
 
         self.checkboxPinyin = QCheckBox("Reformat Pinyin")
         self.checkboxPinyin.setChecked(self.configs.reformat_pinyin)
@@ -179,7 +180,7 @@ class ImportBookmarksGUI(QDialog):
     @staticmethod
     def config_from_user_input():
         dialog = ImportBookmarksGUI()
-        dialog.exec_()
+        dialog.exec()
         return dialog.configs
 
 
