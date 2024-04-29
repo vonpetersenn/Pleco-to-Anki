@@ -101,6 +101,9 @@ def convert_indiv_character(indiv_character):
         # If the character is r5 (儿), remove tone number and return
         if letter_list == ["r", "5"]:
             return "".join(letter_list[:-1])
+        elif all(map(lambda c: c in ' .?!。？！', letter_list)):
+            debug("Found punctuation: ", indiv_character)
+            return indiv_character
         else:
             raise ValueError("Invalid numerical pinyin. Input does not contain a vowel.")
 
