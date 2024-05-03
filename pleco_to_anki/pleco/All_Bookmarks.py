@@ -51,4 +51,4 @@ def category_heading(row : str) -> bool:
 
 #print(load_pleco_data("exampledata.txt")[5].get("Hanzi"))
 
-print(load_pleco_data("D:/Projekte/Pleco-to-Anki/pleco_to_anki/exampledata2.txt"))
+print(load_pleco_data("exampledata2.txt"))
