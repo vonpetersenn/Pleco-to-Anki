@@ -34,7 +34,6 @@ class ImportBookmarksGUI(QDialog):
         self.file_path = ""
         self.select_dir_button.clicked.connect(self.select_file)
 
-        self.group_duplicates = QButtonGroup()
         self.group_spoonfed = QButtonGroup()
         self.label_spoonfed = QLabel("Add Spoonfed examples?")
         self.radio_yes = QRadioButton("Yes")
