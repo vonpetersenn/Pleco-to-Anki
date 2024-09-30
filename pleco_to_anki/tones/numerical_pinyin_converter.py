@@ -41,6 +41,9 @@ def split_words(word):
 def convert_from_numerical_pinyin(word):
     finished_word = []
 
+    # Handling of edge-cases
+    word = word.lower()
+
     # Splits word into individual character strings and calls convert_indiv_character for each
     split_word = split_words(word)
     for indiv_character in split_word:
