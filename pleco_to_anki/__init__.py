@@ -49,7 +49,6 @@ def excecuted_function() -> None:
     all_bookmarks = All_Bookmarks(configs.file_name)
 
     counter = 0
-    counter_duplicates = 0
 
     #for slice in [all_bookmarks.get_slice(5)]: #in all_bookmarks.raw_data:
 
@@ -75,26 +74,12 @@ def excecuted_function() -> None:
 
         note.tags.append(tag)
 
-        if mw.col.find_notes(dict.get('Hanzi')) == []:
-            print("note does not exist in collection yet")
-        elif configs.existing_notes == 'skip':
-            print("note already exists in collection")
-            counter_duplicates += 1
-            continue
-        else:
-            print("note already exists in collection")
-            counter_duplicates += 1
-            note.tags.append('duplicate')
-
         mw.col.add_note(note, deck_id)
 
         counter += 1
 
     showInfo("Successfully created " + str(counter) +
-             " new cards. \n\n"  +
-             "Of the " + str(len(all_bookmarks)) + " bookmarks " + str(counter_duplicates) +
-             " where duplicates, i.e. cards with the same Hanzi field where already in the collection. \n"+
-             "To delete or work on duplicates, look for the tag 'duplicate'.")
+             " cards. \n You can find the cards in the folder `" + deck_name + "` or by looking for the tag `" + tag + "`")
 
 from .notetype import NOTE_TYPE
 

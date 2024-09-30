@@ -20,8 +20,5 @@ class Configuration:
         self.reformat_spoonfed_examples = self.reformat_example_sentences
         self.trad_or_simp = 'trad'
 
-        self.existing_notes = 'duplicates' #'duplicates' or 'skip'. Maybe in the future add option 'update' or 'overwrite'
-
-
     def read_config_from_JSON(self):
         pass
