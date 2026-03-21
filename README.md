@@ -29,6 +29,7 @@ Optionally, it includes context-rich example sentences from [Spoonfed Chinese](h
      - [Sort information into fields](#41-sort-information-into-fields)
      - [Format information](#42-format-information)
      - [Add Spoonfed sentences](#add-spoonfed-sentences)
+   - [5. Contributing](#contributing)
 
 
 # Documentation
