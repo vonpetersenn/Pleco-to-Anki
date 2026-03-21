@@ -193,4 +193,4 @@ To build the `.ankiaddon` file:
 cd pleco_to_anki && zip -r "../pleco to anki vX.X.X.ankiaddon" . && cd ..
 ```
 
-The packaged file is committed to the repo root alongside the source so that releases are tracked in version control.
+The packaged file is uploaded as a release asset on GitHub. `.ankiaddon` files are not tracked in the repository.
