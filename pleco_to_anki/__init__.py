@@ -47,6 +47,7 @@ def excecuted_function() -> None:
     all_bookmarks = All_Bookmarks(configs.file_name)
 
     counter = 0
+    counter_duplicates = 0
 
     #for slice in [all_bookmarks.get_slice(5)]: #in all_bookmarks.raw_data:
 
@@ -72,12 +73,24 @@ def excecuted_function() -> None:
 
         note.tags.append(tag)
 
+        hanzi = dict.get('Hanzi')
+        existing = mw.col.find_notes(f'note:pleco-to-anki "Hanzi:{hanzi}"')
+        if existing:
+            counter_duplicates += 1
+            if configs.existing_notes == 'skip':
+                continue
+            else:
+                note.tags.append('duplicate')
+
         mw.col.add_note(note, deck_id)
 
         counter += 1
 
     showInfo("Successfully created " + str(counter) +
-             " cards. \n You can find the cards in the folder `" + deck_name + "` or by looking for the tag `" + tag + "`")
+             " new cards. \n\n" +
+             "Of the " + str(len(all_bookmarks.raw_data)) + " bookmarks, " + str(counter_duplicates) +
+             " were duplicates.\n\n" +
+             "You can find the new cards in the folder `" + deck_name + "` or by looking for the tag `" + tag + "`.")
 
 from .notetype import NOTE_TYPE
 

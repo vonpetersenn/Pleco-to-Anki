@@ -34,6 +34,15 @@ class ImportBookmarksGUI(QDialog):
         self.file_path = ""
         self.select_dir_button.clicked.connect(self.select_file)
 
+        self.group_duplicates = QButtonGroup()
+        self.label_duplicates = QLabel("How to deal with words that have been imported before?")
+        self.radio_duplicates_skip = QRadioButton("Skip")
+        self.radio_duplicates_duplicate = QRadioButton("Create Note Anyway")
+        self.radio_duplicates_skip.setChecked(self.configs.existing_notes == 'skip')
+        self.radio_duplicates_duplicate.setChecked(self.configs.existing_notes == 'duplicates')
+        self.group_duplicates.addButton(self.radio_duplicates_skip)
+        self.group_duplicates.addButton(self.radio_duplicates_duplicate)
+
         self.group_spoonfed = QButtonGroup()
         self.label_spoonfed = QLabel("Add Spoonfed examples?")
         self.radio_yes = QRadioButton("Yes")
@@ -77,6 +86,10 @@ class ImportBookmarksGUI(QDialog):
         main_layout.addWidget(self.checkboxKeywords)
         main_layout.addWidget(self.checkboxReformatExamples)
         main_layout.addWidget(self.checkboxGroupExamples)
+
+        main_layout.addWidget(self.label_duplicates)
+        main_layout.addWidget(self.radio_duplicates_skip)
+        main_layout.addWidget(self.radio_duplicates_duplicate)
 
         main_layout.addWidget(self.select_dir_button)
 
@@ -153,6 +166,7 @@ class ImportBookmarksGUI(QDialog):
         self.configs.file_name = self.file_path
         self.configs.spoonfed_examples = self.radio_yes.isChecked()
         self.configs.trad_or_simp = "trad" if self.radio_trad.isChecked() else "simp"
+        self.configs.existing_notes = "skip" if self.radio_duplicates_skip.isChecked() else "duplicates"
 
     def ok_button_clicked(self):
         self.store_user_input_in_configs()

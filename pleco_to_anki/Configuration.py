@@ -20,5 +20,7 @@ class Configuration:
         self.reformat_spoonfed_examples = self.reformat_example_sentences
         self.trad_or_simp = 'trad'
 
+        self.existing_notes = 'skip'  # 'duplicates' or 'skip'
+
     def read_config_from_JSON(self):
         pass
