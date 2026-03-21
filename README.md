@@ -9,7 +9,7 @@ Optionally, it includes context-rich example sentences from [Spoonfed Chinese](h
 
 # Quick Guide
 
-1. Install the AddOn through AnkiWeb using the code `427686509` OR by downloading and double-clicking the `pleco_to_anki.addon` [file](https://github.com/vonpetersenn/Pleco-to-Anki/releases) .
+1. Install the AddOn through [AnkiWeb](https://ankiweb.net/shared/info/427686509) using the code `427686509`, or download the latest release from the [Releases page](https://github.com/vonpetersenn/Pleco-to-Anki/releases) and double-click the `.ankiaddon` file.
 2. Export Pleco Bookmarks on your phone and save them on your computer. 
    Make sure to use these [settings](README_media/img_4.png).
 3. Import the Bookmarks in Anki under `Tools -> Import Pleco Bookmarks`
@@ -59,9 +59,9 @@ In order for this feature to work, the Spoonfed anki deck need to be loaded in y
 
 Three options.
 
- - Download the latest release through Anki by using the `427686509` in the Anki AddOns menu: `Tools -> AddOns -> Get AddOns -> code`
- - Download the latest `pleco-to-anki.ankiaddon` file from [GitHub](https://www.github.com/vonpetersenn/pleco-to-anki) and install it by double-clicking or in Anki `Tools -> AddOns -> Install from file`
- - Download the source code and place the folder `pleco_to_anki` in the Anki AddOn folder, which, at least under Windows, is located at `.../AppData/Roaming/Anki2/addons21`'
+1. **AnkiWeb (recommended):** In Anki go to `Tools -> AddOns -> Get AddOns` and enter code `427686509`. [View on AnkiWeb](https://ankiweb.net/shared/info/427686509).
+2. **GitHub Release:** Download the latest `.ankiaddon` file from the [Releases page](https://github.com/vonpetersenn/Pleco-to-Anki/releases) and install by double-clicking or via `Tools -> AddOns -> Install from file`.
+3. **From source:** See the [Contributing](#contributing) section.
 
 If you want to use the Spoonfed Chinese feature, you need to have the Spoonfed Chinese anki deck loaded in your Anki collection. The deck can be bought on the website of Spoonfed Chinese (https://promagma.gumroad.com/l/IEmpwF).
 
