@@ -162,3 +162,35 @@ In this example, 3 sentences contain the character 藏 but actually, the first a
 
 # Contributing
 
+If you find a bug or have a feature request, feel free to open an issue or submit a pull request directly.
+
+If you find a word that should import correctly but doesn't, add it to one of the existing example data files in `pleco_to_anki/` (e.g. `exampledata.txt`) or create a new one from your Pleco export. A **good bug report includes the problematic entry as example data**.
+
+## Development setup
+
+(You might want to first uninstall the Pleco-to-Anki Addon in Anki before starting development and make a backup of your collection.)
+
+Copy or symlink the `pleco_to_anki/` folder into Anki's addons directory and restart Anki to load your changes.
+
+**Copy (simple):**
+```bash
+cp -r pleco_to_anki ~/Library/Application\ Support/Anki2/addons21/pleco_to_anki
+```
+Repeat after every change and restart Anki.
+
+**Symlink (recommended):** lets you edit the source directly without copying.
+```bash
+ln -s /path/to/Pleco-to-Anki/pleco_to_anki ~/Library/Application\ Support/Anki2/addons21/pleco_to_anki
+```
+Only needs to be done once. Anki must still be restarted after each change.
+
+On Windows the addons folder is typically at `%APPDATA%\Anki2\addons21`.
+
+## Packaging
+
+To build the `.ankiaddon` file:
+```bash
+cd pleco_to_anki && zip -r "../pleco to anki vX.X.X.ankiaddon" . && cd ..
+```
+
+The packaged file is committed to the repo root alongside the source so that releases are tracked in version control.
