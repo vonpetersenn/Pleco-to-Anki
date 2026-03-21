@@ -4,7 +4,6 @@ from aqt.utils import showInfo
 from PyQt6 import QtCore
 
 import webbrowser
-import requests
 
 from .Configuration import Configuration
 
@@ -108,25 +107,9 @@ class ImportBookmarksGUI(QDialog):
         self.setLayout(main_layout)
 
     def info_button_clicked(self):
-        # URL of the website you want to open
-        url = "https://github.com/vonpetersenn/pleco-to-anki"
-
         try:
-            # Fetch the website's content
-            response = requests.get(url)
-
-            # Check if the request was successful
-            if response.status_code == 200:
-                # Save the content to a temporary HTML file
-                with open("temp.html", "wb") as f:
-                    f.write(response.content)
-
-                # Open the HTML file in the default web browser
-                webbrowser.open("temp.html")
-            else:
-                print(f"Failed to fetch the website. Status code: {response.status_code}")
-
-        except Exception as e:
+            webbrowser.open("https://github.com/vonpetersenn/pleco-to-anki")
+        except Exception:
             showInfo("github.com/vonpetersenn/pleco-to-anki")
 
     def more_options_button_clicked(self):
