@@ -27,15 +27,13 @@ def excecuted_function() -> None:
     #configs = Configuration()
 
     #initialize note type
-    #TODO: find out why first time the notetype is created twice
     notetype = get_notetype()
     if mw.col.models.by_name(notetype['name']) is not None:
         print("notetype already exists in collection")
         notetype = mw.col.models.by_name(notetype['name'])
-    if mw.col.models.by_name(notetype['name']) is None:
+    else:
         print("notetype does not exist in collection yet")
         mw.col.models.add_dict(notetype)
-        mw.col.models.save(notetype)
         notetype = mw.col.models.by_name(notetype['name'])
 
 
